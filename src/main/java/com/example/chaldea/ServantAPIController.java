@@ -78,10 +78,10 @@ public class ServantAPIController {
 
   
   @GetMapping("/species/{species}")
-  public ResponseEntity<Servant> getServantBySpecies(@PathVariable String species) {
-    Servant servant = servantService.getServantBySpecies(species);
-    if (servant != null) {
-      return ResponseEntity.ok(servant);
+  public ResponseEntity<Collection<Servant>> getServantBySpecies(@PathVariable String species) {
+    List<Servant> servants = servantService.getServantBySpecies(species);
+    if (servants != null) {
+      return ResponseEntity.ok(servants);
     } else {
       return ResponseEntity.notFound().build();
     }

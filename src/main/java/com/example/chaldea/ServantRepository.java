@@ -17,6 +17,6 @@ public interface ServantRepository extends JpaRepository<Servant, Long> {
   @Query(value = "SELECT s.* FROM servants s WHERE s.name like %?1%", nativeQuery = true)
   List<Servant> findByName(String name);
 
-  Servant findBySpecies(String species);
+  List<Servant> findBySpecies(String species);
 
 }

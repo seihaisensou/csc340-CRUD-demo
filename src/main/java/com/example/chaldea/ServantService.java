@@ -53,7 +53,7 @@ public class ServantService {
     return servantRepository.findByName(name);
   }
 
-  public Servant getServantBySpecies(String species) {
+  public List<Servant> getServantBySpecies(String species) {
     return servantRepository.findBySpecies(species);
   }
 
