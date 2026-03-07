@@ -24,23 +24,13 @@ public class ServantAPIController {
     this.servantService = servantService;
   }
 
-  /**
-   * Endpoint to retrieve all students.
-   *
-   * @return ResponseEntity containing a collection of all students.
-   */
+ 
   @GetMapping("/")
   public ResponseEntity<Collection<Servant>> getAllServants() {
     return ResponseEntity.ok(servantService.getAllServants());
   }
 
-  /**
-   * Endpoint to retrieve a student by their ID.
-   *
-   * @param id The ID of the student to retrieve.
-   * @return ResponseEntity containing the student if found, or a 404 Not Found
-   *         status if not found.
-   */
+  
   @GetMapping("/{id}")
   public ResponseEntity<Servant> getServantById(@PathVariable Long id) {
     Servant servant = servantService.getServantById(id);
@@ -51,13 +41,7 @@ public class ServantAPIController {
     }
   }
 
-  /**
-   * Endpoint to create a new student.
-   *
-   * @param servant The student object to create, provided in the request body.
-   * @return ResponseEntity containing the created student if successful, or a 404
-   *         Not Found status if creation fails.
-   */
+  
   @PostMapping("/")
   public ResponseEntity<Servant> createStudent(@RequestBody Servant servant) {
     Servant createdServant = servantService.createServant(servant);
@@ -68,41 +52,19 @@ public class ServantAPIController {
     }
   }
 
-  /**
-   * Endpoint to retrieve students by their major.
-   *
-   * @param type The major to filter students by, provided as a path variable.
-   * @return ResponseEntity containing a collection of students with the specified
-   *         major.
-   */
+  
   @GetMapping("/type/{type}")
   public ResponseEntity<Collection<Servant>> getServantsByType(@PathVariable String type) {
     return ResponseEntity.ok(servantService.getServantsByType(type));
   }
 
-  /**
-   * Endpoint to retrieve honors students based on a minimum GPA.
-   *
-   * @param origin The minimum GPA to filter honors students by, provided as a path
-   *            variable.
-   * @return ResponseEntity containing a collection of honors students with a GPA
-   *         greater than or equal to the specified value.
-   */
-  @GetMapping("/origins/{origin}")
+  
+  @GetMapping("/origin/{origin}")
   public ResponseEntity<Collection<Servant>> getServantsByOrigin(@PathVariable String origin) {
     return ResponseEntity.ok(servantService.getServantsByOrigin(origin));
   }
 
-  /**
-   * Endpoint to search for students by name. If the name parameter is provided,
-   * it will return students whose names contain the specified value. If the name
-   * parameter is not provided, it will return all students.
-   *
-   * @param name The name to search for, provided as a request parameter. This
-   *             parameter is optional.
-   * @return ResponseEntity containing a collection of students that match the
-   *         search criteria, or all students if no name is provided.
-   */
+  
   @GetMapping("/search")
   public ResponseEntity<Collection<Servant>> searchServantsByName(@RequestParam(required = false) String name) {
     List<Servant> servants;
@@ -114,14 +76,7 @@ public class ServantAPIController {
     return ResponseEntity.ok(servants);
   }
 
-  /**
-   * Endpoint to retrieve a student by their email address.
-   *
-   * @param species The email address of the student to retrieve, provided as a
-   *              request parameter.
-   * @return ResponseEntity containing the student if found, or a 404 Not Found
-   *         status if not found.
-   */
+  
   @GetMapping("/species/{species}")
   public ResponseEntity<Servant> getServantBySpecies(@PathVariable String species) {
     Servant servant = servantService.getServantBySpecies(species);
@@ -132,16 +87,7 @@ public class ServantAPIController {
     }
   }
 
-  /**
-   * Endpoint to update an existing student by their ID.
-   *
-   * @param id             The ID of the student to update, provided as a path
-   *                       variable.
-   * @param updatedServant The updated student object, provided in the request
-   *                       body.
-   * @return ResponseEntity containing the updated student if successful, or a 404
-   *         Not Found status if the servant to update is not found.
-   */
+  
   @PutMapping("/{id}")
   public ResponseEntity<Servant> updateServant(@PathVariable Long id, @RequestBody Servant updatedServant) {
     Servant servant = servantService.updateServant(id, updatedServant);
@@ -152,13 +98,7 @@ public class ServantAPIController {
     }
   }
 
-  /**
-   * Endpoint to delete a student by their ID.
-   *
-   * @param id The ID of the student to delete, provided as a path variable.
-   * @return ResponseEntity with no content if deletion is successful, or a 404
-   *         Not Found status if the student to delete is not found.
-   */
+ 
   @DeleteMapping("/{id}")
   public ResponseEntity<Void> deleteServant(@PathVariable Long id) {
     servantService.deleteServant(id);

@@ -11,10 +11,10 @@ public interface ServantRepository extends JpaRepository<Servant, Long> {
 
   List<Servant> findByType(String type);
 
-  @Query(value = "SELECT s.* FROM students s WHERE s.origin like %?1%", nativeQuery = true)
+  @Query(value = "SELECT s.* FROM servants s WHERE s.origin like %?1%", nativeQuery = true)
   List<Servant> findbyOrigin(String origin);
 
-  @Query(value = "SELECT s.* FROM students s WHERE s.name like %?1%", nativeQuery = true)
+  @Query(value = "SELECT s.* FROM servants s WHERE s.name like %?1%", nativeQuery = true)
   List<Servant> findByName(String name);
 
   Servant findBySpecies(String species);
