@@ -13,29 +13,20 @@ public class Servant {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long servantId;
+  private Long servantId;                                 // ID differentiating servants, a unique one is generated when a new servant is created
 
   @Column(nullable = false)
   public String name;
 
   @Column(nullable = false, unique = false)
-  private String type;
-
-  private String species;
-  private String origin;
+  private String type;                                   // Class is a protected name by java so servant.type is supposed to represent the Servant's class
+  private String species;                                // The servant's species
+  private String origin;                                 // The series they originate from
 
   public Servant() {
   }
 
-  public Servant(String name, String type, String species, String origin) {
-    this.name = name;
-    this.type = type;
-    this.species = species;
-    this.origin = origin;
-  }
-
-  public Servant(Long servantId, String name, String type, String species, String origin) {
-    this.servantId = servantId;
+  public Servant(String name, String type, String species, String origin) {     // Constructor of a Servant type object
     this.name = name;
     this.type = type;
     this.species = species;
@@ -43,7 +34,7 @@ public class Servant {
   }
 
   public Long getServantId() {
-    return servantId;
+    return servantId;                                   //  Get and Set methods to easily change and access parameters of the Servant object
   }
 
   public void setServantId(Long servantId) {

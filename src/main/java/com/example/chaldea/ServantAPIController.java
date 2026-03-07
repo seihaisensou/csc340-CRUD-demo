@@ -25,11 +25,14 @@ public class ServantAPIController {
   }
 
  
+  // Endpoint to retrieve all servants currently in the database, ResponseEntity contains a collection of all students.
+
   @GetMapping("/")
   public ResponseEntity<Collection<Servant>> getAllServants() {
     return ResponseEntity.ok(servantService.getAllServants());
   }
-
+  
+  // Endpoint utilzing the id parameter to retrieve a specific servant with that ID, returns the servant if found, otherwise returns 404 not found.
   
   @GetMapping("/{id}")
   public ResponseEntity<Servant> getServantById(@PathVariable Long id) {
@@ -41,7 +44,8 @@ public class ServantAPIController {
     }
   }
 
-  
+  // Endpoint to create a new servant. ResponseEntity returns a container with the newly created Servant if successful, otherwise it returns 404 not found.
+
   @PostMapping("/")
   public ResponseEntity<Servant> createStudent(@RequestBody Servant servant) {
     Servant createdServant = servantService.createServant(servant);
@@ -52,12 +56,14 @@ public class ServantAPIController {
     }
   }
 
+  // Endpoint to retrieve servants of a specific class type, using String type, returns a collection of Servants with that class type.
   
   @GetMapping("/type/{type}")
   public ResponseEntity<Collection<Servant>> getServantsByType(@PathVariable String type) {
     return ResponseEntity.ok(servantService.getServantsByType(type));
   }
 
+  // Endpoint to retrieve servants of a specific origin using String origin. Returns a collection of Servants belonging to that origin.
   
   @GetMapping("/origin/{origin}")
   public ResponseEntity<Collection<Servant>> getServantsByOrigin(@PathVariable String origin) {
@@ -65,6 +71,10 @@ public class ServantAPIController {
   }
 
   
+  // Endpoint that searches for servants by name using String name. 
+  // Returns a collection of those servants if found, if not, an empty container is shown.
+  // If name is null, however, it just displays a collection of the servants in the database.
+
   @GetMapping("/search")
   public ResponseEntity<Collection<Servant>> searchServantsByName(@RequestParam(required = false) String name) {
     List<Servant> servants;
@@ -77,6 +87,8 @@ public class ServantAPIController {
   }
 
   
+  // Endpoint that retrieves a collection of servants under a common species using String species. 
+  // If there are servants that belong and exist to that race, they'll be shown. Otherwise, a 404 not found error will be shown.
   @GetMapping("/species/{species}")
   public ResponseEntity<Collection<Servant>> getServantBySpecies(@PathVariable String species) {
     List<Servant> servants = servantService.getServantBySpecies(species);
@@ -87,7 +99,9 @@ public class ServantAPIController {
     }
   }
 
-  
+  // Endpoint that updates a servant's parameters based on what you input. Retrieves the targeted servant using parameter id. 
+  // Returns the updated servant or if the servant's id was invalid, returns a 404 not found error.
+
   @PutMapping("/{id}")
   public ResponseEntity<Servant> updateServant(@PathVariable Long id, @RequestBody Servant updatedServant) {
     Servant servant = servantService.updateServant(id, updatedServant);
@@ -98,6 +112,7 @@ public class ServantAPIController {
     }
   }
 
+  // Deletes a servant from the table by using it's designated id with the id parameter. Returns an empty container/body afterward.
  
   @DeleteMapping("/{id}")
   public ResponseEntity<Void> deleteServant(@PathVariable Long id) {
