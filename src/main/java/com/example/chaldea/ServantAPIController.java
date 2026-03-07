@@ -27,7 +27,7 @@ public class ServantAPIController {
  
   // Endpoint to retrieve all servants currently in the database, ResponseEntity contains a collection of all students.
 
-  @GetMapping("/")
+  @GetMapping("")
   public ResponseEntity<Collection<Servant>> getAllServants() {
     return ResponseEntity.ok(servantService.getAllServants());
   }
