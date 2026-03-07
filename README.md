@@ -8,7 +8,6 @@ A comprehensive RESTful API for managing servant details, built with Spring Boot
 - [What is This Project?](#what-is-this-project)
 - [Installation & Setup](#installation--setup)
 - [API Endpoints](#api-endpoints)
-- [Key Spring Boot Concepts](#key-spring-boot-concepts)
 - [Database Schema](#database-schema)
 
 ---
@@ -25,10 +24,10 @@ This is a **CRUD API** (Create, Read, Update, Delete) that manages servant detai
 
 **CRUD** stands for:
 
-- **C**reate - Add new student records
-- **R**ead - Retrieve student records
-- **U**pdate - Modify existing student records
-- **D**elete - Remove student records
+- **C**reate - Add new servant records
+- **R**ead - Retrieve servant records
+- **U**pdate - Modify existing servant records
+- **D**elete - Remove servant records
 
 ---
 
@@ -90,7 +89,7 @@ The Maven Wrapper is a handy tool that ensures everyone working on the project u
 
    ```bash
    git clone <repository-url>
-   cd sp26-crud-api-demo
+   cd csc340-CRUD-demo
    ```
 
 2. **Install Dependencies**
@@ -137,7 +136,7 @@ The Maven Wrapper is a handy tool that ensures everyone working on the project u
    Edit `src/main/resources/application.properties` and add your Neon.tech PostgreSQL connection string:
 
    ```properties
-   spring.application.name=crud-api
+   spring.application.name=chaldea
    spring.datasource.url=jdbc:postgresql://host:5432/dbname
    spring.datasource.username=your_neon_username
    spring.datasource.password=your_neon_password
@@ -195,27 +194,27 @@ The Maven Wrapper is a handy tool that ensures everyone working on the project u
 
 ## API Endpoints
 
-All endpoints use the base URL: `http://localhost:8080/api/students`
+All endpoints use the base URL: `http://localhost:8080/api/servants`
 
-### 1. Get All Students
+### 1. Get All Servants
 
 ```http
-GET /api/students/
+GET /api/servants
 ```
 
-**Description**: Retrieve a list of all students in the database.
+**Description**: Retrieve a list of all servants in the database.
 
 **Parameters**: None
 
 **Response**:
 
 - **Status Code**: `200 OK`
-- **Body**: Array of Student objects
+- **Body**: Array of Servant objects
 
 #### Example Request
 
 ```bash
-curl http://localhost:8080/api/students/
+curl http://localhost:8080/api/servants/
 ```
 
 #### Example Response (Status: 200 OK)
@@ -223,56 +222,56 @@ curl http://localhost:8080/api/students/
 ```json
 [
   {
-    "studentId": 1,
-    "name": "Alice Johnson",
-    "email": "alice@university.edu",
-    "major": "Computer Science",
-    "gpa": 3.8
-  },
-  {
-    "studentId": 2,
-    "name": "Bob Smith",
-    "email": "bob@university.edu",
-    "major": "Mathematics",
-    "gpa": 3.5
-  }
+		"name": "Tamamo-no-Mae",
+		"type": "Caster",
+		"species": "Kitsune",
+		"origin": "Fate/EXTRA",
+		"servantId": 1
+	},
+	{
+		"name": "Okita Souji",
+		"type": "Saber",
+		"species": "Human",
+		"origin": "Koha-Ace",
+		"servantId": 2
+	}
 ]
 ```
 
 ---
 
-### 2. Get Student by ID
+### 2. Get Servant by ID
 
 ```http
-GET /api/students/{id}
+GET /api/servants/{id}
 ```
 
-**Description**: Retrieve a single student by their ID.
+**Description**: Retrieve a single servant by their ID.
 
 **Path Parameters**:
 
-- `id` (Long, required): The unique identifier of the student
+- `id` (Long, required): The unique identifier of the servant
 
 **Response**:
 
 - **Status Code**: `200 OK` (if found) or `404 Not Found` (if not found)
-- **Body**: Student object
+- **Body**: servant object
 
 #### Example Request
 
 ```bash
-curl http://localhost:8080/api/students/1
+curl http://localhost:8080/api/servants/1
 ```
 
 #### Example Response (Status: 200 OK)
 
 ```json
 {
-  "studentId": 1,
-  "name": "Alice Johnson",
-  "email": "alice@university.edu",
-  "major": "Computer Science",
-  "gpa": 3.8
+	"name": "Tamamo-no-Mae",
+	"type": "Caster",
+	"species": "Kitsune",
+	"origin": "Fate/EXTRA",
+	"servantId": 1
 }
 ```
 
@@ -284,36 +283,36 @@ curl http://localhost:8080/api/students/1
 
 ---
 
-### 3. Create a New Student
+### 3. Create a New Servant
 
 ```http
-POST /api/students/
+POST /api/servants/
 ```
 
-**Description**: Create a new student record in the database.
+**Description**: Create a new servant record in the database.
 
-**Request Body**: Student object with the following fields:
+**Request Body**: Servant object with the following fields:
 
-- `name` (String, required): Student's full name
-- `email` (String, required, unique): Student's email address
-- `major` (String, optional): Student's major
-- `gpa` (Double, optional): Student's GPA
+- `name` (String, required): Servant's full name
+- `type` (String, required, unique): Servant's class type
+- `species` (String, required): Servant's species
+- `origin` (String, required): Servant's origin
 
 **Response**:
 
 - **Status Code**: `200 OK` (if created successfully)
-- **Body**: Created Student object with assigned `studentId`
+- **Body**: Created Servant object with assigned `servantId`
 
 #### Example Request
 
 ```bash
-curl -X POST http://localhost:8080/api/students/ \
+curl -X POST http://localhost:8080/api/servants/ \
   -H "Content-Type: application/json" \
   -d '{
-    "name": "Charlie Brown",
-    "email": "charlie@university.edu",
-    "major": "Physics",
-    "gpa": 3.7
+    "name": "Nero Claudius",
+    "type": "Saber",
+    "species": "Human",
+    "origin": "Fate/EXTRA"
   }'
 ```
 
@@ -321,88 +320,88 @@ curl -X POST http://localhost:8080/api/students/ \
 
 ```json
 {
-  "studentId": 3,
-  "name": "Charlie Brown",
-  "email": "charlie@university.edu",
-  "major": "Physics",
-  "gpa": 3.7
+  "servantId": 3,
+  "name": "Nero Claudius",
+  "type": "Saber",
+  "species": "Human",
+  "origin": "Fate/EXTRA"
 }
 ```
 
 ---
 
-### 4. Get Students by Major
+### 4. Get Servants by Type
 
 ```http
-GET /api/students/major/{major}
+GET /api/servants/type/{type}
 ```
 
-**Description**: Retrieve all students with a specific major.
+**Description**: Retrieve all servants with a specific class type.
 
 **Path Parameters**:
 
-- `major` (String, required): The major to filter by (e.g., "Computer Science")
+- `type` (String, required): The type to filter by (e.g., "Saber")
 
 **Response**:
 
 - **Status Code**: `200 OK`
-- **Body**: Array of Student objects
+- **Body**: Array of Servant objects
 
 ---
 
-### 5. Get Honors Students
+### 5. Get Servants by Origin
 
 ```http
-GET /api/students/honors/{gpa}
+GET /api/servants/origin/{origin}
 ```
 
-**Description**: Retrieve students with a GPA greater than or equal to the specified value.
+**Description**: Retrieve servants with origins that contain the substring {origin}.
 
 **Path Parameters**:
 
-- `gpa` (Double, required): Minimum GPA for honors (e.g., 3.5)
+- `origin` (String, required): Substring or string of origin.
 
 **Response**:
 
 - **Status Code**: `200 OK`
-- **Body**: Array of Student objects meeting the GPA requirement
+- **Body**: Array of Servant objects in which the origin contains the substring {origin}
 
 #### Example Request
 
 ```bash
-curl http://localhost:8080/api/students/honors/3.7
+curl http://localhost:8080/api/servants/origin/EXTRA
 ```
 
 #### Example Response (Status: 200 OK)
 
 ```json
 [
-  {
-    "studentId": 1,
-    "name": "Alice Johnson",
-    "email": "alice@university.edu",
-    "major": "Computer Science",
-    "gpa": 3.8
-  },
-  {
-    "studentId": 3,
-    "name": "Charlie Brown",
-    "email": "charlie@university.edu",
-    "major": "Physics",
-    "gpa": 3.7
-  }
+ 	{
+		"name": "Tamamo-no-Mae",
+		"type": "Caster",
+		"species": "Kitsune",
+		"origin": "Fate/EXTRA",
+		"servantId": 1
+	},
+	{
+		"name": "Nero Claudius",
+		"type": "Saber",
+		"species": "Human",
+		"origin": "Fate/EXTRA",
+		"servantId": 3
+	}
 ]
 ```
 
 ---
 
-### 6. Search Students by Name
+### 6. Search Servants by Name
 
 ```http
-GET /api/students/search?name={name}
+GET /api/servants/search?name={name}
 ```
 
-**Description**: Search for students by name (partial match supported) or retrieve all students if no name is provided.
+**Description**: Search for Servants by name (partial match supported) or retrieve all servants if no name is provided.
 
 **Query Parameters**:
 
@@ -411,12 +410,12 @@ GET /api/students/search?name={name}
 **Response**:
 
 - **Status Code**: `200 OK`
-- **Body**: Array of matched Student objects
+- **Body**: Array of matched Servant objects
 
 #### Example Request
 
 ```bash
-curl "http://localhost:8080/api/students/search?name=Alice"
+curl "http://localhost:8080/api/servants/search?name=Nero"
 ```
 
 #### Example Response (Status: 200 OK)
@@ -424,70 +423,70 @@ curl "http://localhost:8080/api/students/search?name=Alice"
 ```json
 [
   {
-    "studentId": 1,
-    "name": "Alice Johnson",
-    "email": "alice@university.edu",
-    "major": "Computer Science",
-    "gpa": 3.8
-  }
+		"name": "Nero Claudius",
+		"type": "Saber",
+		"species": "Human",
+		"origin": "Fate/EXTRA",
+		"servantId": 3
+	}
 ]
 ```
 
 ---
 
-### 7. Get Student by Email
+### 7. Get Servants by Species
 
 ```http
-GET /api/students/email/{email}
+GET /api/servants/species/{species}
 ```
 
-**Description**: Retrieve a student by their email address.
+**Description**: Retrieve a servant by their species.
 
 **Path Parameters**:
 
-- `email` (String, required): The student's email address
+- `species` (String, required): The servant's species
 
 **Response**:
 
 - **Status Code**: `200 OK` (if found) or `404 Not Found` (if not found)
-- **Body**: Student object
+- **Body**: Array of matched Servant objects
 
 ---
 
-### 8. Update a Student
+### 8. Update a Servant
 
 ```http
-PUT /api/students/{id}
+PUT /api/servants/{id}
 ```
 
-**Description**: Update an existing student's information.
+**Description**: Update an existing servant's information.
 
 **Path Parameters**:
 
-- `id` (Long, required): The ID of the student to update
+- `id` (Long, required): The ID of the servant to update
 
-**Request Body**: Student object with fields to update:
+**Request Body**: Servant object with fields to update:
 
 - `name` (String): Updated name
-- `email` (String): Updated email
-- `major` (String): Updated major
-- `gpa` (Double): Updated GPA
+- `type` (String): Updated type
+- `species` (String): Updated species
+- `origin` (Double): Updated origin
 
 **Response**:
 
-- **Status Code**: `200 OK` (if updated successfully) or `404 Not Found` (if student not found)
-- **Body**: Updated Student object
+- **Status Code**: `200 OK` (if updated successfully) or `404 Not Found` (if servant not found)
+- **Body**: Updated Servant object
 
 #### Example Request
 
 ```bash
-curl -X PUT http://localhost:8080/api/students/1 \
+curl -X PUT http://localhost:8080/api/servants/3 \
   -H "Content-Type: application/json" \
   -d '{
-    "name": "Alice Johnson",
-    "email": "alice.johnson@university.edu",
-    "major": "Computer Science",
-    "gpa": 3.9
+    "name": "Nero Claudius",
+    "type": "Beast",
+    "species": "Human",
+    "origin": "Fate/EXTRA"
   }'
 ```
 
@@ -495,27 +494,27 @@ curl -X PUT http://localhost:8080/api/students/1 \
 
 ```json
 {
-  "studentId": 1,
-  "name": "Alice Johnson",
-  "email": "alice.johnson@university.edu",
-  "major": "Computer Science",
-  "gpa": 3.9
+  "servantId": 3,
+  "name": "Nero Claudius",
+  "type": "Beast",
+  "species": "Human",
+  "origin": "Fate/EXTRA"
 }
 ```
 
 ---
 
-### 9. Delete a Student
+### 9. Delete a Servant
 
 ```http
-DELETE /api/students/{id}
+DELETE /api/servant/{id}
 ```
 
-**Description**: Delete an existing student record from the database.
+**Description**: Delete an existing servant record from the database.
 
 **Path Parameters**:
 
-- `id` (Long, required): The ID of the student to delete
+- `id` (Long, required): The ID of the Servant to delete
 
 **Response**:
 
@@ -525,7 +524,7 @@ DELETE /api/students/{id}
 #### Example Request
 
 ```bash
-curl -X DELETE http://localhost:8080/api/students/1
+curl -X DELETE http://localhost:8080/api/Servant/1
 ```
 
 #### Example Response (Status: 204 No Content)
@@ -539,27 +538,27 @@ curl -X DELETE http://localhost:8080/api/students/1
 
 ## Database Schema
 
-The application uses a single table to store student data:
+The application uses a single table to store servant data:
 
-### STUDENTS Table
+### SERVANTS Table
 
 | Column       | Type             | Constraints      | Description                         |
 | ------------ | ---------------- | ---------------- | ----------------------------------- |
-| `student_id` | SERIAL           | PRIMARY KEY      | Auto-incrementing unique identifier |
-| `name`       | VARCHAR(255)     | NOT NULL         | Student's full name                 |
-| `email`      | VARCHAR(255)     | NOT NULL, UNIQUE | Student's email (must be unique)    |
-| `major`      | VARCHAR(255)     | Can be NULL      | Student's major (optional)          |
-| `gpa`        | DOUBLE PRECISION | Can be NULL      | Student's GPA (optional)            |
+| `servantId`  | SERIAL           | PRIMARY KEY      | Auto-incrementing unique identifier |
+| `name`       | VARCHAR(255)     | NOT NULL         | Servant's full name                 |
+| `type`       | VARCHAR(255)     | NOT NULL         | Servant's class type                |
+| `species`    | VARCHAR(255)     | NOT NULL         | Servant's species                   |
+| `origin`     | VARCHAR(255)     | NOT NULL         | Servant's origin                    |
 
 ### SQL (for reference)
 
 ```sql
-CREATE TABLE students (
-  student_id SERIAL PRIMARY KEY,
+CREATE TABLE servants (
+  servantId SERIAL PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
-  email VARCHAR(255) NOT NULL UNIQUE,
-  major VARCHAR(255),
-  gpa DOUBLE PRECISION
+  type VARCHAR(255) NOT NULL,
+  species VARCHAR(255) NOT NULL,
+  origin VARCHAR(255) NOT NULL,
 );
 ```
 
@@ -573,7 +572,7 @@ CREATE TABLE students (
 
 1. Create a new request
 2. Select HTTP method (GET, POST, PUT, DELETE)
-3. Enter URL (e.g., http://localhost:8080/api/students/)
+3. Enter URL (e.g., http://localhost:8080/api/servants/)
 4. If POST/PUT, go to "Body" tab → select "raw" and "JSON"
 5. Enter JSON data and click "Send"
 
@@ -587,3 +586,6 @@ CREATE TABLE students (
 - [Spring Data JPA Guide](https://spring.io/projects/spring-data-jpa)
 - [REST API Best Practices](https://restfulapi.net/)
 - [PostgreSQL Documentation](https://www.postgresql.org/docs/)
+
+## Video Demonstration
+https://uncg-my.sharepoint.com/:v:/g/personal/m_reyes2_uncg_edu/IQBH1DHS7YuuRpemjouJzGkhAVQhDLxIFWGMrXquDujth3Q?e=HTF6bF&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbE1vZGUiOiJtaXMiLCJyZWZlcnJhbFZpZXciOiJwb3N0cm9sbC1jb3B5bGluayIsInJlZmVycmFsUGxheWJhY2tTZXNzaW9uSWQiOiIxNmJhYzMwNi1lZTljLTQxYTgtODM4ZC00NzM3YjAxYzkzMzQifX0%3D
