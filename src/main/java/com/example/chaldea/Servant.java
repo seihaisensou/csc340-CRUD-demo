@@ -18,9 +18,11 @@ public class Servant {
   @Column(nullable = false)
   public String name;
 
-  @Column(nullable = false, unique = false)
+  @Column(nullable = false)
   private String type;                                   // Class is a protected name by java so servant.type is supposed to represent the Servant's class
+  @Column(nullable = false)
   private String species;                                // The servant's species
+  @Column(nullable = false)
   private String origin;                                 // The series they originate from
 
   public Servant() {
