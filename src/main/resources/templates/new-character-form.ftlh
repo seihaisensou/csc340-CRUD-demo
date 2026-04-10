@@ -43,7 +43,7 @@
       <textarea id="description" name="description" placeholder="Servant Description" rows = "5" cols="80"></textarea>
       <br><br>
       <br><button type="submit" class="btn btn-primary">Save</button>
-      <a href="/all" class="btn btn-outline-danger">Cancel</a>
+      <a href="/servants/all" class="btn btn-outline-danger">Cancel</a>
     </form></center>
     </p>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
