@@ -24,15 +24,20 @@ public class Servant {
   private String species;                                // The servant's species
   @Column(nullable = false)
   private String origin;                                 // The series they originate from
+  @Column(nullable = false)
+  private String description;                            // a brief overview of the servant
+
+  private String profilePicturePath;
 
   public Servant() {
   }
 
-  public Servant(String name, String type, String species, String origin) {     // Constructor of a Servant type object
+  public Servant(String name, String type, String species, String origin, String description) {     // Constructor of a Servant type object
     this.name = name;
     this.type = type;
     this.species = species;
     this.origin = origin;
+    this.description = description;
   }
 
   public Long getServantId() {
@@ -72,7 +77,22 @@ public class Servant {
   }
 
   public void setOrigin(String origin) {
-    this.origin = origin;
+    this.origin = origin;    
   }
 
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public void setProfilePicturePath(String path){
+    this.profilePicturePath = path;
+  } 
+
+  public String getProfilePicturePath(){
+    return this.profilePicturePath;
+  }
 }
