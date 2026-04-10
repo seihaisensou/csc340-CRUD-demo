@@ -28,10 +28,19 @@ public class ServantService {
   public Servant updateServant(Long id, Servant updatedServant) {
     return servantRepository.findById(id)
         .map(servant -> {
-          servant.setName(updatedServant.getName());                // updates servant using all parameters finding the designated servant via id
-          servant.setType(updatedServant.getType());                // and saves the updated servant into the repository
-          servant.setSpecies(updatedServant.getSpecies());
-          servant.setOrigin(updatedServant.getOrigin());
+          
+          if(!updatedServant.getName().isBlank()){
+            servant.setName(updatedServant.getName());
+          }
+          if(!updatedServant.getType().isBlank()){
+            servant.setType(updatedServant.getType()); // updates servant using all parameters finding the designated servant via id
+          }                                                         // and saves the updated servant into the repository
+          if(!updatedServant.getSpecies().isBlank()){
+            servant.setSpecies(updatedServant.getSpecies());
+          }
+          if(!updatedServant.getOrigin().isBlank()){
+            servant.setOrigin(updatedServant.getOrigin());
+          }
           return servantRepository.save(servant);
         })
         .orElse(null);
