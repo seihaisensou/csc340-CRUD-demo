@@ -49,6 +49,12 @@ public class ServantUiController {
         return "index";
     }
 
+    @GetMapping ("/all/{type}")
+    public String getAllCharactersbyClass(Model model, @PathVariable String type){
+        model.addAttribute("servantRoster", servantService.getServantsByType(type));
+        return "index";
+    }
+
     @PostMapping("/")
     public String addServant(Servant servant, MultipartFile picture) {
     Servant newServant = servantService.createServant(servant);

@@ -58,13 +58,13 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="all">Home</a>
+          <a class="nav-link active" aria-current="page" href="/servants/all">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="about">About</a>
+          <a class="nav-link active" href="/servants/about">About</a>
         </li>        
         <li class="nav-item">
-          <a class="nav-link active" href="add">Summon a new servant</a>
+          <a class="nav-link active" href="/servants/add">Summon a new servant</a>
         </li>
       </ul>
     </div>
@@ -73,6 +73,17 @@
 
 
 <center><h1>A gallery of F/GO servants.</h1></center>
+
+<div class="d-flex gap-2 justify-content-center py-5"> 
+  <a span class="badge text-bg-primary rounded-pill" href="/servants/all/Saber">Saber</span></a>
+   <a span class="badge text-bg-secondary rounded-pill" href="/servants/all/Archer">Archer</span></a>
+    <a span class="badge text-bg-success rounded-pill"  href="/servants/all/Lancer">Lancer</span></a>
+     <a span class="badge text-bg-danger rounded-pill"  href="/servants/all/Rider">Rider</span></a>
+      <a span class="badge text-bg-warning rounded-pill"  href="/servants/all/Caster">Caster</span></a>
+       <a span class="badge text-bg-info rounded-pill"  href="/servants/all/Assassin">Assassin</span></a>
+        <a span class="badge text-bg-light rounded-pill" href="/servants/all/Berserker">Berserker</span> </a>
+  <a span class="badge text-bg-dark rounded-pill"  href="/servants/all/Avenger">Avenger</span></a>
+</div>
     
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for details.." title="Type details"><br>
 
