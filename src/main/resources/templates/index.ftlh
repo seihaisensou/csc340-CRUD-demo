@@ -61,10 +61,10 @@
           <a class="nav-link active" aria-current="page" href="all">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="about">About</a>
+          <a class="nav-link active" href="about">About</a>
         </li>        
         <li class="nav-item">
-          <a class="nav-link" href="add">Summon a new servant</a>
+          <a class="nav-link active" href="add">Summon a new servant</a>
         </li>
       </ul>
     </div>
@@ -86,7 +86,7 @@
         Class: ${servant.type}<br>
         Species: ${servant.species}<br>
         Origin: ${servant.origin}</p>
-    <img src="/servant_pfp/${servant.servantId}.webp" alt="oops" width="256" height="362"></a></li></div>
+    <img src="/servant_pfp/${(servant.profilePicturePath)!'avatar.png'}" alt="oops" width="256" height="362"></a></li></div>
     </#list>
   </div>
 </div>

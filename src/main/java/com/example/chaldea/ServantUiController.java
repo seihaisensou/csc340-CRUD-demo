@@ -17,6 +17,8 @@ public class ServantUiController {
     @Autowired
     private ServantService servantService;
 
+    
+
     @GetMapping("/about")
     public String about(){
         return "about";
@@ -51,7 +53,7 @@ public class ServantUiController {
     public String addServant(Servant servant, MultipartFile picture) {
     Servant newServant = servantService.createServant(servant);
     if (newServant != null) {
-       //servantService.saveProfilePicture(servant, picture);
+      servantService.saveProfilePicture(newServant, picture);
       return "redirect:/servants/" + newServant.getServantId();
     } 
     else {
@@ -60,10 +62,10 @@ public class ServantUiController {
     }
 
     @PostMapping("/update/{id}")
-    public String updateServant(@PathVariable Long id, Servant updatedsServant, MultipartFile picture) {
-    Servant servant = servantService.updateServant(id, updatedsServant);
+    public String updateServant(@PathVariable Long id, Servant updatedServant, MultipartFile picture) {
+    Servant servant = servantService.updateServant(id, updatedServant);
     if (servant != null) {
-      // servantService.saveProfilePicture(servant, picture);
+      servantService.saveProfilePicture(servant, picture);
       return "redirect:/servants/" + servant.getServantId();
     } 
     else {
@@ -82,7 +84,7 @@ public class ServantUiController {
     @GetMapping("/delete/{id}")
     public String deleteServant(@PathVariable Long id) {
         servantService.deleteServant(id);
-        return "redirect:/servants/";
+        return "redirect:/servants/all";
     }
     
 }

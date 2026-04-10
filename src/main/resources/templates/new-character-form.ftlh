@@ -20,10 +20,10 @@
           <a class="nav-link active" aria-current="page" href="all">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="about">About</a>
+          <a class="nav-link active" href="about">About</a>
         </li>        
         <li class="nav-item">
-          <a class="nav-link" href="add">Summon a new servant</a>
+          <a class="nav-link active" href="add">Summon a new servant</a>
         </li>
       </ul>
     </div>
@@ -38,9 +38,11 @@
       <input type="text" id="type" name="type" placeholder="Servant Class Type" />
       <input type="text" id="species" name="species" placeholder="Servant Species" />
       <input type="text" id="origin" name="origin" placeholder="Servant Origin" />
-      <label for="picture" class="form-label"> Picture:</label>
-      <input type="file" id="picture" name="picture" />
-      <button type="submit" class="btn btn-primary">Save</button>
+      <br><label for="picture" class="form-label"> Picture:</label>
+      <input type="file" id="picture" name="picture" /><br>Servant description:<br>
+      <textarea id="description" name="description" placeholder="Servant Description" rows = "5" cols="80"></textarea>
+      <br><br>
+      <br><button type="submit" class="btn btn-primary">Save</button>
       <a href="/all" class="btn btn-outline-danger">Cancel</a>
     </form></center>
     </p>

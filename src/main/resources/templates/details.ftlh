@@ -20,13 +20,16 @@
           <a class="nav-link active" aria-current="page" href="all">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="about">About</a>
+          <a class="nav-link active" href="about">About</a>
         </li>        
         <li class="nav-item">
-          <a class="nav-link" href="add">Summon a new servant</a>
-        </li>
+          <a class="nav-link active" href="add">Summon a new servant</a>
+        </li> 
         <li class="nav-item">
-          <a class="nav-link" href="updateForm/${foundCharacter.servantId}">Alter this servant's saint graph</a>
+          <a class="nav-link active" type="button" href="updateForm/${foundCharacter.servantId}">Alter this servant's saint graph</a>
+        </li>        
+        <li class="nav-item">
+          <a class="nav-link active" type="button" href="delete/${foundCharacter.servantId}">Delete this servant</a>
         </li>
       </ul>
     </div>
@@ -44,8 +47,9 @@
       <p> <b>${foundCharacter.name}</b><br>
         Class: ${foundCharacter.type}<br>
         Species: ${foundCharacter.species}<br>
-        Origin: ${foundCharacter.origin}</p>
-    <center><img src="/servant_pfp/${foundCharacter.servantId}.webp" alt="oops"></li></center>
+        Origin: ${foundCharacter.origin}<br>
+        Description: ${foundCharacter.description}</p>
+    <center><img src="/servant_pfp/${(foundCharacter.profilePicturePath)!'avatar.png'}" alt="oops"></li></center>
     </div>
   </div>
 </div>
