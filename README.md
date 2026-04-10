@@ -587,3 +587,8 @@ CREATE TABLE students (
 - [Spring Data JPA Guide](https://spring.io/projects/spring-data-jpa)
 - [REST API Best Practices](https://restfulapi.net/)
 - [PostgreSQL Documentation](https://www.postgresql.org/docs/)
+
+
+## MVC Demo
+
+https://uncg-my.sharepoint.com/:v:/g/personal/m_reyes2_uncg_edu/IQCo_R3PP2KkR6yUfVgxPSWmAcN-XL6jpXIEbrUAMP31oXg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=C9IKgC
